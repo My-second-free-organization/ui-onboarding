@@ -1,0 +1,16 @@
+replicaCount: 3
+image:
+  repository: flowforge/platform-core
+  tag: latest
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8080
+resources:
+  requests: { cpu: 500m, memory: 512Mi }
+  limits: { cpu: 1000m, memory: 1Gi }
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilization: 70
